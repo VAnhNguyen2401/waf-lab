@@ -1,0 +1,199 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #ffffff;
+  color: #222;
+  margin: 0;
+}
+
+header {
+  border-bottom: 1px solid #ddd;
+  padding: 16px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+nav a {
+  color: #222;
+  text-decoration: none;
+  margin-left: 16px;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+main {
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+.section {
+  margin-bottom: 30px;
+}
+
+.search-box {
+  display: flex;
+  gap: 8px;
+  max-width: 600px;
+}
+
+input,
+textarea {
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  padding: 9px;
+  font-size: 14px;
+}
+
+input {
+  min-width: 260px;
+}
+
+button {
+  border: 1px solid #333;
+  background: #222;
+  color: white;
+  padding: 9px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #444;
+}
+
+#products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.product {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 16px;
+  background: white;
+}
+
+.product h3 {
+  margin-top: 0;
+}
+
+.product a {
+  display: inline-block;
+  margin-top: 8px;
+  color: #0066cc;
+}
+
+.review {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 12px;
+  margin-bottom: 10px;
+}
+
+.form-box {
+  max-width: 500px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 20px;
+}
+
+.form-box input,
+.form-box textarea {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.success {
+  color: green;
+}
+
+.error {
+  color: red;
+}
+
+footer {
+  border-top: 1px solid #ddd;
+  margin-top: 40px;
+  padding: 20px;
+  text-align: center;
+  color: #666;
+  font-size: 13px;
+}
+
+.product-detail-box {
+  max-width: 650px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 22px;
+  background: white;
+  margin-bottom: 30px;
+}
+
+.product-detail-box h2 {
+  margin-top: 0;
+}
+
+.product-detail-box p {
+  margin: 10px 0;
+  font-size: 17px;
+}
+
+.review-section {
+  max-width: 700px;
+  margin-top: 30px;
+}
+
+#reviews {
+  margin-bottom: 20px;
+}
+
+.review {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 14px;
+  margin-bottom: 10px;
+  background: white;
+}
+
+.review strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.review p {
+  margin: 6px 0;
+}
+
+.review small {
+  color: #666;
+}
+
+#reviewForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#reviewForm input,
+#reviewForm textarea {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#reviewForm textarea {
+  resize: vertical;
+}
+
+#reviewForm button {
+  width: fit-content;
+  margin-top: 5px;
+}

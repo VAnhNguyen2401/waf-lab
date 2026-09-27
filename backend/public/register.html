@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Register</title>
+
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+  <header>
+    <h1>⚽ Football Sport Shop</h1>
+
+    <nav>
+      <a href="/">Home</a>
+      <a href="/login.html">Login</a>
+      <a href="/register.html">Register</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <h2>Create Account</h2>
+
+    <div class="form-box">
+
+      <form id="registerForm">
+
+        <label for="registerUsername">
+          Username
+        </label>
+
+        <br>
+
+        <input
+          type="text"
+          id="registerUsername"
+          placeholder="Enter username"
+          required
+        >
+
+        <br><br>
+
+        <label for="registerEmail">
+          Email
+        </label>
+
+        <br>
+
+        <input
+          type="email"
+          id="registerEmail"
+          placeholder="Enter email"
+          required
+        >
+
+        <br><br>
+
+        <label for="registerPassword">
+          Password
+        </label>
+
+        <br>
+
+        <input
+          type="password"
+          id="registerPassword"
+          placeholder="Enter password"
+          required
+        >
+
+        <br><br>
+
+        <button type="submit">
+          Register
+        </button>
+
+      </form>
+
+      <p id="authMessage"></p>
+
+      <p>
+        Already have an account?
+        <a href="/login.html">Login here</a>
+      </p>
+
+    </div>
+
+  </main>
+
+  <footer>
+    WAF Research Lab - Football Sport Shop
+  </footer>
+
+  <script src="/js/auth.js"></script>
+
+</body>
+</html>

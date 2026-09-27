@@ -1,0 +1,14 @@
+{
+  "name": "waf-lab-backend",
+  "version": "1.0.0",
+  "description": "Backend for WAF research lab",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "express": "^5.0.0",
+    "pg": "^8.0.0"
+  }
+}

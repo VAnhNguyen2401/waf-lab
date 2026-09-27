@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Product Detail</title>
+
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+  <header>
+    <h1>⚽ Football Sport Shop</h1>
+
+    <nav>
+      <a href="/">Home</a>
+      <a href="/login.html">Login</a>
+      <a href="/register.html">Register</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <h2>Product Detail</h2>
+
+    <div id="productDetail" class="product-detail-box">
+      Loading product...
+    </div>
+
+    <section class="review-section">
+      <h2>Reviews</h2>
+
+      <div id="reviews"></div>
+    </section>
+
+    <section class="review-section">
+      <h2>Add Review</h2>
+
+      <div class="form-box">
+
+        <form id="reviewForm">
+
+          <label for="reviewUsername">
+            Username
+          </label>
+
+          <input
+            type="text"
+            id="reviewUsername"
+            placeholder="Enter username"
+            required
+          >
+
+          <label for="reviewContent">
+            Review
+          </label>
+
+          <textarea
+            id="reviewContent"
+            rows="5"
+            placeholder="Write your review..."
+            required
+          ></textarea>
+
+          <button type="submit">
+            Submit Review
+          </button>
+
+        </form>
+
+        <p id="reviewMessage"></p>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    WAF Research Lab - Football Sport Shop
+  </footer>
+
+  <script src="/js/reviews.js"></script>
+
+</body>
+</html>
