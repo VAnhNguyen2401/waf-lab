@@ -32,6 +32,14 @@ const createReview = async (req, res, next) => {
       });
     }
 
+    /*
+     * INTENTIONALLY UNSANITIZED
+     *
+     * Review content được lưu nguyên bản để phục vụ
+     * Stored XSS research lab.
+     *
+     * SQL query vẫn parameterized => không phải SQL Injection.
+     */
     const result = await pool.query(
       `
       INSERT INTO reviews (
@@ -50,11 +58,13 @@ const createReview = async (req, res, next) => {
       [productId, username, content]
     );
 
+    console.log("[REVIEW USERNAME]", username);
+    console.log("[REVIEW CONTENT]", content);
+
     res.status(201).json({
       message: "Review submitted successfully",
       review: result.rows[0],
     });
-
   } catch (error) {
     next(error);
   }
@@ -85,11 +95,13 @@ const getReviews = async (req, res, next) => {
       [productId]
     );
 
+    /*
+     * Stored content được trả nguyên lại client.
+     */
     res.json({
       count: result.rows.length,
       reviews: result.rows,
     });
-
   } catch (error) {
     next(error);
   }

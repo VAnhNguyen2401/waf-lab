@@ -131,13 +131,23 @@ async function loadReviews() {
       const username =
         document.createElement("strong");
 
+      /*
+       * Username vẫn render an toàn.
+       */
       username.textContent =
         review.username;
 
       const content =
         document.createElement("p");
 
-      content.textContent =
+      /*
+       * INTENTIONALLY VULNERABLE
+       * Stored XSS research lab.
+       *
+       * review.content được lấy từ database
+       * và render trực tiếp dưới dạng HTML.
+       */
+      content.innerHTML =
         review.content;
 
       const date =
@@ -234,6 +244,12 @@ if (reviewForm) {
 
         reviewForm.reset();
 
+        /*
+         * Sau khi submit, load lại review.
+         * Nếu content chứa HTML nguy hiểm và
+         * backend đã lưu nguyên nội dung,
+         * nó sẽ quay lại qua loadReviews().
+         */
         await loadReviews();
 
       } catch (error) {

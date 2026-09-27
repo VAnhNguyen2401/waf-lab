@@ -39,8 +39,12 @@ if (searchForm) {
         renderProducts(data.products);
 
         if (searchStatus) {
-          searchStatus.textContent =
-            `Results: ${data.count}`;
+          /*
+           * INTENTIONALLY VULNERABLE
+           * Reflected XSS lab.
+           */
+          searchStatus.innerHTML =
+            `Search results for: ${data.keyword} (${data.count})`;
         }
 
       } catch (error) {

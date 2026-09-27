@@ -4,8 +4,12 @@ const searchProducts = async (req, res, next) => {
   try {
     const keyword = req.query.q || "";
 
-    const result = await pool.query(
-      `
+    /*
+     * INTENTIONALLY VULNERABLE
+     * SQL Injection lab:
+     * User input được nối trực tiếp vào câu SQL.
+     */
+    const sql = `
       SELECT
         p.id,
         p.name,
@@ -18,15 +22,22 @@ const searchProducts = async (req, res, next) => {
       LEFT JOIN categories AS c
         ON p.category_id = c.id
       WHERE
-        p.name ILIKE $1
-        OR p.brand ILIKE $1
-        OR p.description ILIKE $1
-        OR c.name ILIKE $1
+        p.name ILIKE '%${keyword}%'
+        OR p.brand ILIKE '%${keyword}%'
+        OR p.description ILIKE '%${keyword}%'
+        OR c.name ILIKE '%${keyword}%'
       ORDER BY p.id ASC
-      `,
-      [`%${keyword}%`]
-    );
+    `;
 
+    console.log("[SEARCH INPUT]", keyword);
+    console.log("[SQL QUERY]", sql);
+
+    const result = await pool.query(sql);
+
+    /*
+     * Phần này cố tình vẫn an toàn.
+     * Search log không phải vulnerability sink.
+     */
     await pool.query(
       `
       INSERT INTO search_logs (keyword)

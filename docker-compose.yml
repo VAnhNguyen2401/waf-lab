@@ -34,8 +34,8 @@ services:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
 
-    expose:
-      - "3000"
+    ports:
+      - "3000:3000"
 
     depends_on:
       postgres:
