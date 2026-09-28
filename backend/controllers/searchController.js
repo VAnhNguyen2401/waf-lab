@@ -7,8 +7,20 @@ const searchProducts = async (req, res, next) => {
     /*
      * INTENTIONALLY VULNERABLE
      * SQL Injection lab:
-     * User input được nối trực tiếp vào câu SQL.
+     * User input is directly concatenated into SQL.
      */
+
+    console.log("[SEARCH INPUT]", keyword);
+
+    // Log input independently from vulnerable SQL execution
+    await pool.query(
+      `
+      INSERT INTO search_logs (keyword)
+      VALUES ($1)
+      `,
+      [keyword]
+    );
+
     const sql = `
       SELECT
         p.id,
@@ -29,22 +41,9 @@ const searchProducts = async (req, res, next) => {
       ORDER BY p.id ASC
     `;
 
-    console.log("[SEARCH INPUT]", keyword);
     console.log("[SQL QUERY]", sql);
 
     const result = await pool.query(sql);
-
-    /*
-     * Phần này cố tình vẫn an toàn.
-     * Search log không phải vulnerability sink.
-     */
-    await pool.query(
-      `
-      INSERT INTO search_logs (keyword)
-      VALUES ($1)
-      `,
-      [keyword]
-    );
 
     res.json({
       keyword,
@@ -52,6 +51,7 @@ const searchProducts = async (req, res, next) => {
       products: result.rows,
     });
   } catch (error) {
+    console.error("[SEARCH ERROR]", error.message);
     next(error);
   }
 };
